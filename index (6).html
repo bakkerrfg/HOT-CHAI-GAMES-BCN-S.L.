@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOT CHAI GAMES BCN S.L. | Brewing Digital Worlds</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        chai: {
+                            bg: '#0a0605', /* Very dark espresso/brown-black */
+                            card: '#140c0a', /* Slightly lighter warm dark */
+                            border: '#2e1c16',
+                            accent: '#f97316', /* Vibrant orange/amber */
+                            accentHover: '#ea580c',
+                            textMuted: '#a89d99',
+                            textWhite: '#faf8f7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0605;
+            color: #faf8f7;
+        }
+        .bg-mesh {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(234, 88, 12, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+        .spa-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .spa-view.active {
+            display: block;
+            opacity: 1;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border-radius: 0.5rem;
+            border: 1px solid #2e1c16;
+            background-color: #0a0605;
+            color: #faf8f7;
+            transition: all 0.2s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 0 0 1px #f97316;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col bg-mesh relative">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-chai-bg/85 backdrop-blur-lg border-b border-chai-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#home" class="flex items-center group relative z-10">
+                    <div class="w-10 h-10 bg-chai-accent text-chai-bg rounded-lg flex items-center justify-center mr-3 group-hover:scale-105 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <span class="font-display font-bold text-2xl tracking-wide text-chai-textWhite uppercase">Hot Chai Games</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 relative z-10">
+                    <a href="#home" class="text-sm font-semibold text-chai-textMuted hover:text-chai-textWhite uppercase tracking-widest transition-colors">Portfolio</a>
+                    <a href="#support" class="text-sm font-semibold text-chai-textMuted hover:text-chai-textWhite uppercase tracking-widest transition-colors">Support</a>
+                    <a href="#support" class="px-5 py-2.5 rounded-lg bg-chai-accent text-chai-bg text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-chai-bg transition-colors">
+                        Connect
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center relative z-10">
+                    <button id="mobileMenuBtn" class="text-chai-textMuted hover:text-white transition-colors">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-chai-card border-b border-chai-border relative z-10">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#home" class="block px-3 py-3 text-sm font-semibold text-chai-textMuted hover:text-white uppercase tracking-widest border-b border-chai-border/50">Portfolio</a>
+                <a href="#support" class="block px-3 py-3 text-sm font-semibold text-chai-textMuted hover:text-white uppercase tracking-widest border-b border-chai-border/50">Support</a>
+                <a href="#privacy" class="block px-3 py-3 text-sm font-semibold text-chai-textMuted hover:text-white uppercase tracking-widest">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow pt-20 relative z-10">
+        
+        <!-- ==================== HOME VIEW ==================== -->
+        <div id="view-home" class="spa-view active">
+            <!-- Hero -->
+            <section class="py-24 lg:py-32 px-6">
+                <div class="max-w-5xl mx-auto text-center">
+                    <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-chai-accent/40 bg-chai-accent/10 text-chai-accent text-xs font-bold tracking-widest uppercase mb-8">
+                        Barcelona • Game Engineering
+                    </div>
+                    <h1 class="font-display font-extrabold text-5xl md:text-7xl lg:text-8xl text-white leading-tight mb-8">
+                        Brewing <br/>
+                        <span class="text-chai-accent">Digital Worlds.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-chai-textMuted max-w-2xl mx-auto font-light leading-relaxed">
+                        HOT CHAI GAMES BCN S.L. develops high-fidelity interactive entertainment and proprietary rendering technologies for the iOS ecosystem.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="py-20 px-6 border-t border-chai-border bg-chai-bg/50 backdrop-blur-sm">
+                <div class="max-w-7xl mx-auto">
+                    <div class="mb-16">
+                        <h2 class="font-display text-4xl font-bold text-white mb-3 tracking-wide">Development Pipeline</h2>
+                        <p class="text-chai-textMuted text-lg">Upcoming mobile applications currently in production phases.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- App 1 -->
+                        <div class="bg-chai-card border border-chai-border p-8 rounded-2xl hover:border-chai-accent/50 transition-colors group">
+                            <div class="w-14 h-14 bg-chai-bg border border-chai-border rounded-xl flex items-center justify-center text-chai-accent mb-8 group-hover:scale-110 transition-transform">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <h3 class="font-display text-3xl font-bold text-white mb-3">Neon Barista</h3>
+                            <div class="inline-flex items-center px-3 py-1 bg-chai-bg text-chai-textMuted border border-chai-border text-xs font-bold uppercase tracking-wider rounded-full mb-5">
+                                <span class="w-2 h-2 rounded-full bg-yellow-500 mr-2"></span> Closed Beta
+                            </div>
+                            <p class="text-chai-textMuted text-base leading-relaxed">
+                                A fast-paced arcade simulation game utilizing Apple's Metal API for seamless 120fps performance. Currently undergoing closed multiplayer stress tests.
+                            </p>
+                        </div>
+
+                        <!-- App 2 -->
+                        <div class="bg-chai-card border border-chai-border p-8 rounded-2xl hover:border-chai-accent/50 transition-colors group">
+                            <div class="w-14 h-14 bg-chai-bg border border-chai-border rounded-xl flex items-center justify-center text-chai-accent mb-8 group-hover:scale-110 transition-transform">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                            </div>
+                            <h3 class="font-display text-3xl font-bold text-white mb-3">Chai Engine</h3>
+                            <div class="inline-flex items-center px-3 py-1 bg-chai-bg text-chai-textMuted border border-chai-border text-xs font-bold uppercase tracking-wider rounded-full mb-5">
+                                <span class="w-2 h-2 rounded-full bg-blue-500 mr-2"></span> In Engineering
+                            </div>
+                            <p class="text-chai-textMuted text-base leading-relaxed">
+                                Our proprietary 2D physics and rendering framework, optimized to minimize battery consumption during extended mobile gaming sessions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Corporate Registry -->
+            <section class="py-24 px-6 border-t border-chai-border">
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-10 text-center md:text-left">
+                        <h2 class="font-display text-4xl font-bold text-white mb-2 tracking-wide">Corporate Registry</h2>
+                        <p class="text-chai-textMuted text-base">Verified operational data.</p>
+                    </div>
+
+                    <div class="bg-chai-card border border-chai-border p-8 md:p-12 rounded-3xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-chai-accent/5 rounded-bl-full pointer-events-none"></div>
+
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 pb-8 border-b border-chai-border">
+                            <div>
+                                <p class="text-xs font-bold text-chai-accent uppercase tracking-widest mb-2">Registered Entity</p>
+                                <h3 class="text-3xl md:text-4xl font-display font-bold text-white uppercase tracking-wider">HOT CHAI GAMES BCN S.L.</h3>
+                            </div>
+                            <div class="mt-4 md:mt-0">
+                                <div class="px-4 py-2 bg-green-950/30 border border-green-500/30 text-green-400 text-xs font-bold uppercase tracking-widest rounded-lg flex items-center">
+                                    <span class="w-2 h-2 bg-green-400 rounded-full mr-2 shadow-[0_0_8px_rgba(74,222,128,0.8)]"></span> Active Status
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div>
+                                <p class="text-xs font-bold text-chai-textMuted uppercase tracking-widest mb-3">D-U-N-S® Number</p>
+                                <p class="text-xl font-mono text-white font-medium bg-chai-bg inline-block px-5 py-2.5 border border-chai-border rounded-lg">374020610</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-chai-textMuted uppercase tracking-widest mb-3">Headquarters Address</p>
+                                <div class="flex items-start">
+                                    <svg class="w-6 h-6 text-chai-accent mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    <p class="text-lg text-white leading-relaxed font-medium">
+                                        CALLE PELLAIRES 30<br>
+                                        BARCELONA, 08019<br>
+                                        Spain
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== SUPPORT VIEW ==================== -->
+        <div id="view-support" class="spa-view pt-12 pb-24 px-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h1 class="font-display text-5xl font-bold text-white mb-4 tracking-wide">Studio Support</h1>
+                    <p class="text-chai-textMuted text-lg">Contact our engineering or community teams for beta access and business inquiries.</p>
+                </div>
+
+                <div class="bg-chai-card border border-chai-border p-8 md:p-10 rounded-3xl">
+                    <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-chai-textMuted uppercase tracking-widest mb-2">Name</label>
+                                <input type="text" name="name" required class="form-input" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-chai-textMuted uppercase tracking-widest mb-2">Email</label>
+                                <input type="email" name="email" required class="form-input" placeholder="email@domain.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-chai-textMuted uppercase tracking-widest mb-2">Inquiry Focus</label>
+                            <select name="subject" class="form-input appearance-none">
+                                <option>Neon Barista Beta Access</option>
+                                <option>Technical Assistance</option>
+                                <option>Corporate / Publishing</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-chai-textMuted uppercase tracking-widest mb-2">Message</label>
+                            <textarea name="message" rows="5" required class="form-input resize-none" placeholder="How can we assist you?"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 bg-chai-accent text-chai-bg font-bold tracking-widest uppercase rounded-xl hover:bg-white transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div class="mt-12 text-center p-8 bg-chai-bg border border-chai-border rounded-3xl">
+                    <p class="text-chai-textMuted text-sm font-semibold uppercase tracking-widest mb-2">Direct channel</p>
+                    <a href="mailto:admin@hotchaigames.xyz" class="text-chai-accent hover:text-white transition-colors text-xl md:text-2xl font-display mt-2 inline-block font-bold">admin@hotchaigames.xyz</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PRIVACY VIEW ==================== -->
+        <div id="view-privacy" class="spa-view pt-12 pb-32 px-6">
+            <div class="max-w-4xl mx-auto bg-chai-card border border-chai-border p-10 md:p-16 rounded-3xl">
+                <h1 class="font-display text-4xl font-bold text-white mb-2 tracking-wide">Privacy Policy</h1>
+                <p class="text-chai-accent text-xs font-bold tracking-widest uppercase mb-10 pb-8 border-b border-chai-border">Effective Date: June 05, 2024</p>
+                
+                <div class="space-y-8 text-chai-textMuted text-base leading-relaxed">
+                    <p><strong>HOT CHAI GAMES BCN S.L.</strong> respects your data privacy. This policy outlines our methods for data management across our digital gaming platforms and web portals.</p>
+                    
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3 tracking-wide">1. Data Collection</h3>
+                        <p>We do not harvest personally identifiable information implicitly. System diagnostics and crash logs are collected anonymously strictly to refine our mobile game engines and ensure software stability.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3 tracking-wide">2. Utilization of Data</h3>
+                        <p>Any data explicitly provided via our contact channels or beta sign-ups is used solely to facilitate player support, distribute pre-release software, and address technical faults within our titles.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3 tracking-wide">3. European GDPR Compliance</h3>
+                        <p>Headquartered in Barcelona, Spain, our operations are fully compliant with the General Data Protection Regulation (GDPR). Users maintain full rights to request access, modification, or deletion of their submitted data at any time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TERMS VIEW ==================== -->
+        <div id="view-terms" class="spa-view pt-12 pb-32 px-6">
+            <div class="max-w-4xl mx-auto bg-chai-card border border-chai-border p-10 md:p-16 rounded-3xl">
+                <h1 class="font-display text-4xl font-bold text-white mb-2 tracking-wide">Terms of Service</h1>
+                <p class="text-chai-accent text-xs font-bold tracking-widest uppercase mb-10 pb-8 border-b border-chai-border">Last Updated: June 05, 2024</p>
+                
+                <div class="space-y-8 text-chai-textMuted text-base leading-relaxed">
+                    <p>By engaging with the software ecosystems and portals developed by <strong>HOT CHAI GAMES BCN S.L.</strong>, you agree to these operational terms and conditions.</p>
+                    
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3 tracking-wide">1. End-User License Agreement</h3>
+                        <p>We provide a limited, non-exclusive license for personal use of our interactive software. Reverse engineering, data mining, or commercial redistribution of our game assets and code is strictly prohibited.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3 tracking-wide">2. Beta Software Disclaimer</h3>
+                        <p>Titles marked as "In Development" or "Beta Phase" are provided as-is without warranties. HOT CHAI GAMES BCN S.L. holds no liability for data loss or device performance issues resulting from the use of pre-release software.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-display font-bold text-white mb-3 tracking-wide">3. Legal Jurisdiction</h3>
+                        <p>These terms are governed by the laws of Spain. Any legal disputes, claims, or arbitration shall be resolved exclusively within the jurisdiction of the courts of Barcelona.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-chai-border bg-chai-bg px-6 py-12 mt-auto relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <span class="font-display font-bold text-white uppercase tracking-widest block mb-2 text-lg">HOT CHAI GAMES BCN S.L.</span>
+                <span class="text-chai-textMuted font-mono text-xs">&copy; 2024-2026. All rights reserved.</span>
+            </div>
+            <div class="flex space-x-8">
+                <a href="#privacy" class="text-chai-textMuted hover:text-white uppercase tracking-widest font-bold transition-colors">Privacy</a>
+                <a href="#terms" class="text-chai-textMuted hover:text-white uppercase tracking-widest font-bold transition-colors">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SPA Router Script -->
+    <script>
+        function route() {
+            let hash = window.location.hash || '#home';
+            if (hash === '#' || hash === '') hash = '#home';
+
+            document.querySelectorAll('.spa-view').forEach(view => {
+                view.classList.remove('active');
+            });
+
+            const targetView = document.querySelector('#view-' + hash.substring(1));
+            if (targetView) {
+                targetView.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                document.querySelector('#view-home').classList.add('active');
+                window.location.hash = '#home';
+            }
+        }
+
+        window.addEventListener('hashchange', route);
+        window.addEventListener('DOMContentLoaded', route);
+
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
